@@ -22,6 +22,8 @@ class google_analytics extends modules {
 			->register_scripts()
 			->get_root()->add_section( $this );
 
+		$this->add_service();
+
 		add_action('init', array($this, 'load'));
 	}
 
@@ -122,7 +124,7 @@ class google_analytics extends modules {
 				->set_type('js');
 
 			$this->get_script('default')
-				->set_deps(array($this->get_script('ga')->get_handle()))
+				->set_deps(array('jquery', $this->get_script('ga')->get_handle()))
 				->set_path('lib/frontend/js/default.js')
 				->set_type('js');
 			
@@ -189,7 +191,7 @@ class google_analytics extends modules {
 	}
 	public function get_user_id_hash(): string{
 		if($this->is_active_user_identification()) {
-			return md5(wp_hash_password(get_current_user_id()));
+			return md5(get_current_user_id().wp_get_current_user()->user_login);
 		}else{
 			return '';
 		}
