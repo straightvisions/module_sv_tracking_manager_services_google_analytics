@@ -33,6 +33,11 @@ class google_analytics extends modules {
 			->set_description('Enable Tracking')
 			->load_type( 'checkbox' );
 
+		$this->get_setting('anonymize_ip')
+			->set_title(__('Anonymize IP', 'sv_tracking_manager'))
+			->set_description(__(sprintf('%sEnable IP Address anonymization%s', '<a target="_blank" href="https://support.google.com/analytics/answer/2763052?hl=en">','</a>'), 'sv_tracking_manager'))
+			->load_type('checkbox');
+
 		$this->get_setting('user_identification')
 			->set_title(__('User Identification', 'sv_tracking_manager'))
 			->set_description(__(sprintf('%sEnable User Identification%s', '<a target="_blank" href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id">','</a>'), 'sv_tracking_manager'))
@@ -170,7 +175,8 @@ class google_analytics extends modules {
 				->set_is_enqueued()
 				->set_localized(array(
 				'tracking_id'	=> $this->get_setting('tracking_id')->run_type()->get_data(),
-				'user_id'		=> $this->get_user_id_hash()
+				'user_id'		=> $this->get_user_id_hash(),
+				'anonymize_ip'	=> $this->get_setting('anonymize_ip')->run_type()->get_data() ? 'true' : 'false'
 			));
 			
 			$this->events();
