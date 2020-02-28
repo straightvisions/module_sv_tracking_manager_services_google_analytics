@@ -60,14 +60,14 @@ class google_analytics extends modules {
 			->set_description(__('This Label will be used as Entry Title for this Settings Group.', 'sv_tracking_manager'))
 			->load_type('text')
 			->set_placeholder('Entry #...');
-		
+
 		$this->get_setting('custom_events')->run_type()->add_child($this)
 			->set_ID('event')
 			->set_title(__('Event Trigger', 'sv_tracking_manager'))
 			->set_description(__('Selected trigger will be monitored for event action, see https://www.w3schools.com/jquery/jquery_events.asp', 'sv_tracking_manager'))
 			->load_type('text')
 			->set_placeholder('click');
-		
+
 		$this->get_setting('custom_events')->run_type()->add_child($this)
 			->set_ID('element')
 			->set_title(__('DOM Element', 'sv_tracking_manager'))
@@ -75,7 +75,7 @@ class google_analytics extends modules {
 			->load_type('text')
 			->set_placeholder('html')
 			->set_default_value('html');
-		
+
 		$this->get_setting('custom_events')->run_type()->add_child($this)
 			->set_ID('scroll_percentage')
 			->set_title(__('Scroll Percentage', 'sv_tracking_manager'))
@@ -83,37 +83,37 @@ class google_analytics extends modules {
 			->load_type('number')
 			->set_min(0)
 			->set_max(100);
-		
+
 		$this->get_setting('custom_events')->run_type()->add_child($this)
 			->set_ID('eventCategory')
 			->set_title(__('eventCategory', 'sv_tracking_manager'))
 			->set_description(__('Typically the object that was interacted with (e.g. "Video")', 'sv_tracking_manager'))
 			->load_type('text');
-		
+
 		$this->get_setting('custom_events')->run_type()->add_child($this)
 			->set_ID('eventAction')
 			->set_title(__('eventAction', 'sv_tracking_manager'))
 			->set_description(__('The type of interaction (e.g. "play")', 'sv_tracking_manager'))
 			->load_type('text');
-		
+
 		$this->get_setting('custom_events')->run_type()->add_child($this)
 			->set_ID('eventLabel')
 			->set_title(__('eventLabel', 'sv_tracking_manager'))
 			->set_description(__('Useful for categorizing events (e.g. "Fall Campaign")', 'sv_tracking_manager'))
 			->load_type('text');
-		
+
 		$this->get_setting('custom_events')->run_type()->add_child($this)
 			->set_ID('eventValue')
 			->set_title(__('eventValue', 'sv_tracking_manager'))
 			->set_description(__('A numeric value associated with the event (e.g. 42)', 'sv_tracking_manager'))
 			->load_type('number');
-		
+
 		$this->get_setting('custom_events')->run_type()->add_child($this)
 			->set_ID('active_page')
 			->set_title(__('Active Page', 'sv_tracking_manager'))
 			->set_description(__('Optional, if you do not want to apply this event globally on site, but on a specific page.', 'sv_tracking_manager'))
 			->load_type('select_page');
-		
+
 		$this->get_setting('custom_events')->run_type()->add_child($this)
 			 ->set_ID('non_interaction')
 			 ->set_title(__('Non Interaction', 'sv_tracking_manager'))
@@ -125,7 +125,7 @@ class google_analytics extends modules {
 	protected function register_scripts(): google_analytics {
 		if($this->is_active()) {
 			$this->get_script('ga')
-				->set_path('https://www.googletagmanager.com/gtag/js?id='.$this->get_setting('tracking_id')->run_type()->get_data(), true)
+				->set_path('https://www.googletagmanager.com/gtag/js?id='.$this->get_setting('tracking_id')->get_data(), true)
 				->set_type('js')
 			->set_custom_attributes(' data-usercentrics="Google Analytics"');
 
@@ -149,19 +149,19 @@ class google_analytics extends modules {
 	}
 	public function is_active(): bool{
 		// activate not set
-		if(!$this->get_setting('activate')->run_type()->get_data()){
+		if(!$this->get_setting('activate')->get_data()){
 			return false;
 		}
 		// activate not true
-		if($this->get_setting('activate')->run_type()->get_data() !== '1'){
+		if($this->get_setting('activate')->get_data() !== '1'){
 			return false;
 		}
 		// Tracking ID not set
-		if(!$this->get_setting('tracking_id')->run_type()->get_data()){
+		if(!$this->get_setting('tracking_id')->get_data()){
 			return false;
 		}
 		// Tracking ID empty
-		if(strlen(trim($this->get_setting('tracking_id')->run_type()->get_data())) === 0){
+		if(strlen(trim($this->get_setting('tracking_id')->get_data())) === 0){
 			return false;
 		}
 
@@ -174,9 +174,9 @@ class google_analytics extends modules {
 			$this->get_script('default')
 				->set_is_enqueued()
 				->set_localized(array(
-				'tracking_id'	=> $this->get_setting('tracking_id')->run_type()->get_data(),
+				'tracking_id'	=> $this->get_setting('tracking_id')->get_data(),
 				'user_id'		=> $this->get_user_id_hash(),
-				'anonymize_ip'	=> $this->get_setting('anonymize_ip')->run_type()->get_data() ? 'true' : 'false'
+				'anonymize_ip'	=> $this->get_setting('anonymize_ip')->get_data() ? 'true' : 'false'
 			));
 			
 			$this->events();
@@ -186,11 +186,11 @@ class google_analytics extends modules {
 	}
 	public function is_active_user_identification(): bool{
 		// activate not set
-		if(!$this->get_setting('user_identification')->run_type()->get_data()){
+		if(!$this->get_setting('user_identification')->get_data()){
 			return false;
 		}
 		// activate not true
-		if($this->get_setting('user_identification')->run_type()->get_data() !== '1'){
+		if($this->get_setting('user_identification')->get_data() !== '1'){
 			return false;
 		}
 
@@ -207,7 +207,7 @@ class google_analytics extends modules {
 		$value = str_replace('"', "'", $value);
 	}
 	public function events(): google_analytics{
-		$events				= $this->get_setting('custom_events')->run_type()->get_data();
+		$events				= $this->get_setting('custom_events')->get_data();
 		$events_js			= array();
 		$events_scroll_js	= array();
 		
