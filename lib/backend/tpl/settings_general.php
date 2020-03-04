@@ -10,7 +10,7 @@
 	</div>
 	<div class="sv_setting_flex">
 		<?php
-			echo $module->get_setting('tracking_id')->run_type()->form();
+			echo $module->get_setting('tracking_id')->form();
 		?>
 	</div>
 </div>
