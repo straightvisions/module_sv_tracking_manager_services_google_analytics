@@ -230,10 +230,10 @@ class google_analytics extends modules {
 						'scroll_percentage'		=> intval($event['scroll_percentage']),
 						'event'           		=> $event['event'],
 						'element'				=> $event['element'],
-						'category'				=> $event['eventCategory'],
-						'action'				=> $event['eventAction'],
-						'label'					=> $event['eventLabel'],
-						'value'					=> intval( $event['eventValue'] ),
+						'category'				=> $event['eventcategory'],
+						'action'				=> $event['eventaction'],
+						'label'					=> $event['eventlabel'],
+						'value'					=> intval( $event['eventvalue'] ),
 						'non_interaction'		=> ( isset( $event['non_interaction'] ) && intval( $event['non_interaction'] ) > 0 ) ? true : false,
 						'triggered'				=> false
 					);
@@ -241,10 +241,10 @@ class google_analytics extends modules {
 					$events_js[] = array(
 						'event'           => $event['event'],
 						'element'         => $event['element'],
-						'category'        => $event['eventCategory'],
-						'action'          => $event['eventAction'],
-						'label'           => $event['eventLabel'],
-						'value'           => intval( $event['eventValue'] ),
+						'category'        => $event['eventcategory'],
+						'action'          => $event['eventaction'],
+						'label'           => $event['eventlabel'],
+						'value'           => intval( $event['eventvalue'] ),
 						'non_interaction' => ( isset( $event['non_interaction'] ) && intval( $event['non_interaction'] ) > 0 ) ? true : false,
 					);
 				}
