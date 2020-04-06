@@ -3,7 +3,7 @@
 	<p><a target="_blank" href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events">Documentation</a></p>
 	<div class="sv_setting_flex">
 		<?php
-			echo $module->get_setting('custom_events')->run_type()->form();
+			echo $module->get_setting('custom_events')->form();
 		?>
 	</div>
 </div>
