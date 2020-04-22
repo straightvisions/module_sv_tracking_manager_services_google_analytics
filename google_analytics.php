@@ -54,21 +54,21 @@ class google_analytics extends modules {
 			->set_title(__('Custom Events', 'sv_tracking_manager'))
 			->load_type('group');
 		
-		$this->get_setting('custom_events')->run_type()->add_child($this)
+		$this->get_setting('custom_events')->run_type()->add_child()
 			->set_ID('entry_label')
 			->set_title(__('Entry Label', 'sv_tracking_manager'))
 			->set_description(__('This Label will be used as Entry Title for this Settings Group.', 'sv_tracking_manager'))
 			->load_type('text')
 			->set_placeholder('Entry #...');
 
-		$this->get_setting('custom_events')->run_type()->add_child($this)
+		$this->get_setting('custom_events')->run_type()->add_child()
 			->set_ID('event')
 			->set_title(__('Event Trigger', 'sv_tracking_manager'))
 			->set_description(__('Selected trigger will be monitored for event action, see https://www.w3schools.com/jquery/jquery_events.asp', 'sv_tracking_manager'))
 			->load_type('text')
 			->set_placeholder('click');
 
-		$this->get_setting('custom_events')->run_type()->add_child($this)
+		$this->get_setting('custom_events')->run_type()->add_child()
 			->set_ID('element')
 			->set_title(__('DOM Element', 'sv_tracking_manager'))
 			->set_description(__('DOM Selector (e.g. .contact_form, #submit)', 'sv_tracking_manager'))
@@ -76,7 +76,7 @@ class google_analytics extends modules {
 			->set_placeholder('html')
 			->set_default_value('html');
 
-		$this->get_setting('custom_events')->run_type()->add_child($this)
+		$this->get_setting('custom_events')->run_type()->add_child()
 			->set_ID('scroll_percentage')
 			->set_title(__('Scroll Percentage', 'sv_tracking_manager'))
 			->set_description(__('Requires Event Trigger set to "scroll". This Event will be triggered once scrolling has reached percentage of the DOM element set above. Use "html" as element if you want to track scroll-status auf the whole page. When no percentage is set, event triggers when element is in view.', 'sv_tracking_manager'))
@@ -84,37 +84,37 @@ class google_analytics extends modules {
 			->set_min(0)
 			->set_max(100);
 
-		$this->get_setting('custom_events')->run_type()->add_child($this)
+		$this->get_setting('custom_events')->run_type()->add_child()
 			->set_ID('eventCategory')
 			->set_title(__('eventCategory', 'sv_tracking_manager'))
 			->set_description(__('Typically the object that was interacted with (e.g. "Video")', 'sv_tracking_manager'))
 			->load_type('text');
 
-		$this->get_setting('custom_events')->run_type()->add_child($this)
+		$this->get_setting('custom_events')->run_type()->add_child()
 			->set_ID('eventAction')
 			->set_title(__('eventAction', 'sv_tracking_manager'))
 			->set_description(__('The type of interaction (e.g. "play")', 'sv_tracking_manager'))
 			->load_type('text');
 
-		$this->get_setting('custom_events')->run_type()->add_child($this)
+		$this->get_setting('custom_events')->run_type()->add_child()
 			->set_ID('eventLabel')
 			->set_title(__('eventLabel', 'sv_tracking_manager'))
 			->set_description(__('Useful for categorizing events (e.g. "Fall Campaign")', 'sv_tracking_manager'))
 			->load_type('text');
 
-		$this->get_setting('custom_events')->run_type()->add_child($this)
+		$this->get_setting('custom_events')->run_type()->add_child()
 			->set_ID('eventValue')
 			->set_title(__('eventValue', 'sv_tracking_manager'))
 			->set_description(__('A numeric value associated with the event (e.g. 42)', 'sv_tracking_manager'))
 			->load_type('number');
 
-		$this->get_setting('custom_events')->run_type()->add_child($this)
+		$this->get_setting('custom_events')->run_type()->add_child()
 			->set_ID('active_page')
 			->set_title(__('Active Page', 'sv_tracking_manager'))
 			->set_description(__('Optional, if you do not want to apply this event globally on site, but on a specific page.', 'sv_tracking_manager'))
 			->load_type('select_page');
 
-		$this->get_setting('custom_events')->run_type()->add_child($this)
+		$this->get_setting('custom_events')->run_type()->add_child()
 			 ->set_ID('non_interaction')
 			 ->set_title(__('Non Interaction', 'sv_tracking_manager'))
 			 ->set_description(__('Custom Events will reduce bounce rate in Analytics. Activate this to avoid reducing bounce rate by this event.', 'sv_tracking_manager'))
