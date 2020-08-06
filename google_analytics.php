@@ -126,8 +126,7 @@ class google_analytics extends modules {
 		if($this->is_active()) {
 			$this->get_script('ga')
 				->set_path('https://www.googletagmanager.com/gtag/js?id='.$this->get_setting('tracking_id')->get_data(), true)
-				->set_type('js')
-			->set_custom_attributes(' data-usercentrics="Google Analytics"');
+				->set_type('js');
 
 			$this->get_script('default')
 				->set_deps(array('jquery', $this->get_script('ga')->get_handle()))
