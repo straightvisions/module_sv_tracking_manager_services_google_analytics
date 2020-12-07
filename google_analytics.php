@@ -125,7 +125,7 @@ class google_analytics extends modules {
 	protected function register_scripts(): google_analytics {
 		if($this->is_active()) {
 			$this->get_script('ga')
-				->set_path('https://www.googletagmanager.com/gtag/js?id='.$this->get_setting('tracking_id')->get_data(), true)
+				->set_path('https://www.googletagmanager.com/gtag/js', true)
 				->set_type('js');
 
 			$this->get_script('default')
