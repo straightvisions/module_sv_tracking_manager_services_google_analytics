@@ -33,6 +33,11 @@ class google_analytics extends modules {
 			->set_description('Enable Tracking')
 			->load_type( 'checkbox' );
 
+		$this->get_setting('ga4')
+			->set_title( __( 'GA4 Compatibility Mode', 'sv_tracking_manager' ) )
+			->set_description('This option will become default once Universal-Analytics is shut down. Enable this if you use GA4.')
+			->load_type( 'checkbox' );
+
 		$this->get_setting('anonymize_ip')
 			->set_title(__('Anonymize IP', 'sv_tracking_manager'))
 			->set_description(__(sprintf('%sEnable IP Address anonymization%s', '<a target="_blank" href="https://support.google.com/analytics/answer/2763052?hl=en">','</a>'), 'sv_tracking_manager'))

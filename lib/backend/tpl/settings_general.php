@@ -4,6 +4,7 @@
 	<div class="sv_setting_flex">
 	<?php
 		echo $module->get_setting('activate')->form();
+		echo $module->get_setting('ga4')->form();
 		echo $module->get_setting('user_identification')->form();
 		echo $module->get_setting('anonymize_ip')->form();
 	?>
